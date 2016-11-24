@@ -38,23 +38,27 @@ public class NetherDoorTeleport {
     private void setupRunnable() {
         runnable = new Runnable() {
             public void run() {
-                if (!iter.hasNext()) {
-                    iter = Bukkit.getServer().getOnlinePlayers().iterator();
-                }
-                Player p = iter.next();
-                if (p.getLocation().getBlock().getType() == Material.PORTAL
-                        && p.getWorld().getEnvironment() == Environment.NORMAL) {
-                    if (in_portal_list.contains(p)) {
-                        p.teleport(p.getWorld().getHighestBlockAt(p.getLocation()).getLocation());
-                        in_portal_list.remove(p);
-                    } else {
-                        in_portal_list.add(p);
+                int player_count = Bukkit.getServer().getOnlinePlayers().size();
+                int delay = 200;
+                if(Bukkit.getServer().getOnlinePlayers().size() > 0){
+                    if (!iter.hasNext()) {
+                        iter = Bukkit.getServer().getOnlinePlayers().iterator();
                     }
-                } else {
-                    if (in_portal_list.contains(p))
-                        in_portal_list.remove(p);
+                    Player p = iter.next();
+                    if (p.getLocation().getBlock().getType() == Material.PORTAL
+                            && p.getWorld().getEnvironment() == Environment.NORMAL) {
+                        if (in_portal_list.contains(p)) {
+                            p.teleport(p.getWorld().getHighestBlockAt(p.getLocation()).getLocation());
+                            in_portal_list.remove(p);
+                        } else {
+                            in_portal_list.add(p);
+                        }
+                    } else {
+                        if (in_portal_list.contains(p))
+                            in_portal_list.remove(p);
+                    }
+                    delay = 200 / player_count;
                 }
-                int delay = 200 / Bukkit.getServer().getOnlinePlayers().size();
                 if (delay < 1)
                     delay = 1;
                 schedule_id = Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, runnable, delay);
