@@ -32,7 +32,9 @@ public class NetherDoorTeleport {
     }
 
     public void setTeleportLocation(Player p, Location l) {
-        teleport_location.put(p, l);
+        if(l != null){
+            teleport_location.put(p, l);
+        }
     }
 
     private void setupRunnable() {
@@ -47,8 +49,9 @@ public class NetherDoorTeleport {
                     Player p = iter.next();
                     if (p.getLocation().getBlock().getType() == Material.PORTAL
                             && p.getWorld().getEnvironment() == Environment.NORMAL) {
-                        if (in_portal_list.contains(p)) {
-                            p.teleport(teleport_location.get(p));
+                        Location l = teleport_location.get(p);
+                        if (l != null) {
+                            p.teleport(l);
                             in_portal_list.remove(p);
                         } else {
                             in_portal_list.add(p);

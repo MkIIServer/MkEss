@@ -8,6 +8,7 @@ import tw.mics.spigot.plugin.mkess.config.Config;
 import tw.mics.spigot.plugin.mkess.listener.AntiTowerListener;
 import tw.mics.spigot.plugin.mkess.listener.DeathMessageListener;
 import tw.mics.spigot.plugin.mkess.listener.LiquidLimitListener;
+import tw.mics.spigot.plugin.mkess.listener.NetherDoorTeleportListener;
 import tw.mics.spigot.plugin.mkess.schedule.NetherDoorTeleport;
 
 public class MkEss extends JavaPlugin {
@@ -21,6 +22,7 @@ public class MkEss extends JavaPlugin {
         new AntiTowerListener(this);
         new DeathMessageListener(this);
         new LiquidLimitListener(this);
+        new NetherDoorTeleportListener(this);
         netherdoor = new NetherDoorTeleport(this);
         this.getCommand("kill").setExecutor(new KillCommand(this));
     }
