@@ -48,7 +48,7 @@ public class NetherDoorTeleport {
                     if (p.getLocation().getBlock().getType() == Material.PORTAL
                             && p.getWorld().getEnvironment() == Environment.NORMAL) {
                         if (in_portal_list.contains(p)) {
-                            p.teleport(p.getWorld().getHighestBlockAt(p.getLocation()).getLocation());
+                            p.teleport(teleport_location.get(p));
                             in_portal_list.remove(p);
                         } else {
                             in_portal_list.add(p);
