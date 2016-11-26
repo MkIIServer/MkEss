@@ -18,12 +18,17 @@ public class PlayerPrefixListener extends MyListener {
     public PlayerPrefixListener(MkEss instance) {
         super(instance);
         RegisteredServiceProvider<Chat> chat = Bukkit.getServer().getServicesManager().getRegistration(Chat.class);
+        if(chat == null){
+            plugin.log("Do not have permission plugin, prefix system disable.");
+            return;
+        }
         this.chat = chat.getProvider();
     }
 
     @SuppressWarnings("deprecation")
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event){
+        if(this.chat == null) return;
         Bukkit.getScheduler().scheduleAsyncDelayedTask(plugin, new Runnable(){
             @Override
             public void run() {
