@@ -6,7 +6,7 @@
     <groupId>tw.mics.spigot.plugin.mkess</groupId>
     <artifactId>MkEss</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <name>MkEss</name>
     <url>http://mics.tw</url>
 
@@ -65,6 +65,12 @@
             <id>spigot-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
+        
+        <!-- vault -->
+        <repository>
+		    <id>vault-repo</id>
+		    <url>http://nexus.hc.to/content/repositories/pub_releases</url>
+		</repository>
     </repositories>
 
     <dependencies>
@@ -74,6 +80,14 @@
                <artifactId>spigot-api</artifactId>
                <version>${mc-version}-${bukkit-ver}</version>
                <scope>provided</scope>
+        </dependency>
+        
+        <!--vault API-->
+        <dependency>
+            <groupId>net.milkbowl.vault</groupId>
+            <artifactId>VaultAPI</artifactId>
+            <version>1.6</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
     <description>MkII Server Modify. (private use, no config)</description>

@@ -5,6 +5,8 @@ description: ${project.description}
 author: Mics
 website: https://mics.tw
 
+depend: [Vault]
+
 commands:
   kill:
     description: kill yourself
