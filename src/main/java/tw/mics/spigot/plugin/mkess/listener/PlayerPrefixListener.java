@@ -25,37 +25,42 @@ public class PlayerPrefixListener extends MyListener {
         this.chat = chat.getProvider();
     }
 
-    @SuppressWarnings("deprecation")
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event){
         if(this.chat == null) return;
-        Bukkit.getScheduler().scheduleAsyncDelayedTask(plugin, new Runnable(){
+        
+        //set scoreboard
+        event.getPlayer().setScoreboard(Bukkit.getScoreboardManager().getMainScoreboard());
+        
+        new Thread(new Runnable(){
             @Override
             public void run() {
                 Player p = event.getPlayer();
                 String str = chat.getPlayerPrefix(p);
                 setPrefix(p, str);
             }
-        }, 10);
+        }).start();
     }
     
-
-    @SuppressWarnings("deprecation")
     private void setPrefix(Player p, String prefix){
-        if(prefix != null){
+        if(prefix != null && !prefix.isEmpty()){
             prefix = ChatColor.translateAlternateColorCodes('&', prefix);
             if(prefix.length() > 16) prefix = prefix.substring(0, 16);
-            Scoreboard board = Bukkit.getScoreboardManager().getMainScoreboard();
-            Team team = board.getTeam(p.getName());
-            if (team == null) {
-              team = board.registerNewTeam(p.getName());
-            }
+            Team team = getTeam(prefix);
             team.setPrefix(prefix);
-            team.addPlayer(p);
-            
-            for(Player online : Bukkit.getOnlinePlayers()){
-                online.setScoreboard(board);
-            }
+            team.addEntry(p.getName());;
         }
+    }
+    
+    private Team getTeam(String prefix) {
+        String teamname = prefix.replace("&", "");
+        Scoreboard board = Bukkit.getScoreboardManager().getMainScoreboard();
+        Team team = board.getTeam(teamname);
+        if (team == null) {
+          team = board.registerNewTeam(teamname);
+          team.setCanSeeFriendlyInvisibles(false);
+          team.setAllowFriendlyFire(true);
+        }
+        return team;
     }
 }

@@ -1,7 +1,12 @@
 package tw.mics.spigot.plugin.mkess;
 
+import java.util.Iterator;
+
+import org.bukkit.Bukkit;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scoreboard.Scoreboard;
+import org.bukkit.scoreboard.Team;
 
 import tw.mics.spigot.plugin.mkess.command.KillCommand;
 import tw.mics.spigot.plugin.mkess.config.Config;
@@ -27,6 +32,9 @@ public class MkEss extends JavaPlugin {
         new PlayerPrefixListener(this);
         netherdoor = new NetherDoorTeleport(this);
         this.getCommand("kill").setExecutor(new KillCommand(this));
+        
+        //
+        setScoreboard();
     }
 
     @Override
@@ -51,6 +59,17 @@ public class MkEss extends JavaPlugin {
         if (Config.DEBUG.getBoolean()) {
             String message = String.format(str, args);
             getLogger().info("(DEBUG) " + message);
+        }
+    }
+    
+
+    //================ private ================
+    private void setScoreboard(){
+        Scoreboard board = Bukkit.getScoreboardManager().getMainScoreboard();
+        Iterator<Team> iter = board.getTeams().iterator();
+        while(iter.hasNext()){
+            Team team = iter.next();
+            team.unregister();
         }
     }
 }
