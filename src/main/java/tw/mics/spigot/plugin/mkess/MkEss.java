@@ -11,7 +11,6 @@ import org.bukkit.scoreboard.Team;
 import tw.mics.spigot.plugin.mkess.command.KillCommand;
 import tw.mics.spigot.plugin.mkess.config.Config;
 import tw.mics.spigot.plugin.mkess.listener.AntiTowerListener;
-import tw.mics.spigot.plugin.mkess.listener.DeathMessageListener;
 import tw.mics.spigot.plugin.mkess.listener.LiquidLimitListener;
 import tw.mics.spigot.plugin.mkess.listener.NetherDoorTeleportListener;
 import tw.mics.spigot.plugin.mkess.listener.PlayerPrefixListener;
@@ -26,7 +25,6 @@ public class MkEss extends JavaPlugin {
         INSTANCE = this;
         Config.load();
         new AntiTowerListener(this);
-        new DeathMessageListener(this);
         new LiquidLimitListener(this);
         new NetherDoorTeleportListener(this);
         new PlayerPrefixListener(this);
@@ -34,6 +32,7 @@ public class MkEss extends JavaPlugin {
         this.getCommand("kill").setExecutor(new KillCommand(this));
         
         //
+        WorldSetting.runsetting();
         setScoreboard();
     }
 
