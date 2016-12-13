@@ -16,6 +16,7 @@ public class WorldSetting {
                 break;
             default:
             }
+            world.setGameRuleValue("showDeathMessages", "false");
         }
     }
 }
