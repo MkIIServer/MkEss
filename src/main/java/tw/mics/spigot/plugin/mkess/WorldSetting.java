@@ -17,6 +17,7 @@ public class WorldSetting {
             default:
             }
             world.setGameRuleValue("showDeathMessages", "false");
+            world.setGameRuleValue("maxEntityCramming", "8");
         }
     }
 }
