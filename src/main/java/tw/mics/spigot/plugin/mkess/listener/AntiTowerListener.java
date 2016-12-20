@@ -1,6 +1,7 @@
 package tw.mics.spigot.plugin.mkess.listener;
 
 import org.bukkit.entity.Animals;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityDeathEvent;
@@ -19,6 +20,8 @@ public class AntiTowerListener extends MyListener {
         if (e.getEntity() instanceof Player)
             return;
         if (e.getEntity() instanceof Animals)
+            return;
+        if (e.getEntity().getType() == EntityType.ARMOR_STAND)
             return;
         if (e.getDroppedExp() == 0) {
             e.getDrops().clear();
