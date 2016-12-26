@@ -42,6 +42,7 @@ public class PlayerVIPExpiredListener extends MyListener {
             public void run() {
                 try {
                     LinkedHashMap<String, List<CachedGroup>> unknow = future.get();
+                    if(unknow.keySet().isEmpty()) return;
                     List<CachedGroup> groups = unknow.get(unknow.keySet().toArray()[0]);
                     for(CachedGroup group : groups){
                         if(group.willExpire()){
