@@ -16,6 +16,7 @@ import tw.mics.spigot.plugin.mkess.MkEss;
 
 public class PlayerPrefixListener extends MyListener {
     private Chat chat;
+    static private PlayerPrefixListener instance;
 
     public PlayerPrefixListener(MkEss instance) {
         super(instance);
@@ -25,21 +26,24 @@ public class PlayerPrefixListener extends MyListener {
             return;
         }
         this.chat = chat.getProvider();
+        PlayerPrefixListener.instance = this;
     }
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event){
         if(this.chat == null) return;
-        
+        setPlayerPrefix(event.getPlayer());
+    }
+    
+    static public void setPlayerPrefix(Player p){
         //set scoreboard
-        event.getPlayer().setScoreboard(Bukkit.getScoreboardManager().getMainScoreboard());
+        p.setScoreboard(Bukkit.getScoreboardManager().getMainScoreboard());
         
         new Thread(new Runnable(){
             @Override
             public void run() {
-                Player p = event.getPlayer();
-                String str = chat.getPlayerPrefix(p);
-                setPrefix(p, str);
+                String str = instance.chat.getPlayerPrefix(p);
+                instance.setPrefix(p, str);
             }
         }).start();
     }

@@ -10,11 +10,15 @@ import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 import com.github.cheesesoftware.PowerfulPermsAPI.CachedGroup;
 import com.github.cheesesoftware.PowerfulPermsAPI.PermissionManager;
+import com.github.cheesesoftware.PowerfulPermsAPI.PlayerGroupExpiredEvent;
+import com.github.cheesesoftware.PowerfulPermsAPI.PowerfulEvent;
+import com.github.cheesesoftware.PowerfulPermsAPI.PowerfulPermsListener;
 import com.github.cheesesoftware.PowerfulPermsAPI.PowerfulPermsPlugin;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.MoreExecutors;
@@ -22,7 +26,7 @@ import com.google.common.util.concurrent.MoreExecutors;
 import net.md_5.bungee.api.ChatColor;
 import tw.mics.spigot.plugin.mkess.MkEss;
 
-public class PlayerVIPExpiredListener extends MyListener {
+public class PlayerVIPExpiredListener extends MyListener implements PowerfulPermsListener {
     final PowerfulPermsPlugin ppplugin;
     PermissionManager permissionManager;
     DateFormat dataformat;
@@ -30,6 +34,7 @@ public class PlayerVIPExpiredListener extends MyListener {
         super(instance);
         ppplugin = (PowerfulPermsPlugin) Bukkit.getPluginManager().getPlugin("PowerfulPerms");
         permissionManager = ppplugin.getPermissionManager();
+        permissionManager.getEventHandler().registerListener(this);
         dataformat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss"); 
     }
 
@@ -68,5 +73,12 @@ public class PlayerVIPExpiredListener extends MyListener {
             }
 
         }, MoreExecutors.sameThreadExecutor());
+    }
+    
+    @PowerfulEvent
+    public void onPlayerGroupExpired(PlayerGroupExpiredEvent event){
+        Player p = Bukkit.getPlayer(event.getPlayerUUID());
+        p.sendMessage(ChatColor.GOLD + "您的 VIP 已經到期, Mk.II 感謝您的支持.");
+        PlayerPrefixListener.setPlayerPrefix(p);
     }
 }
