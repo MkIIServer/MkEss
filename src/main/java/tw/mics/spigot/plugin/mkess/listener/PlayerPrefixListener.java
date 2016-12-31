@@ -1,5 +1,7 @@
 package tw.mics.spigot.plugin.mkess.listener;
 
+import java.util.Set;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -49,6 +51,10 @@ public class PlayerPrefixListener extends MyListener {
             Team team = getTeam(prefix);
             team.setPrefix(prefix);
             team.addEntry(p.getName());;
+        } else {
+            for(Team team: getTeams()){
+                team.removeEntry(p.getName());
+            }
         }
     }
     
@@ -62,5 +68,11 @@ public class PlayerPrefixListener extends MyListener {
           team.setAllowFriendlyFire(true);
         }
         return team;
+    }
+    
+    private Set<Team> getTeams() {
+        Scoreboard board = Bukkit.getScoreboardManager().getMainScoreboard();
+        Set<Team> teams = board.getTeams();
+        return teams;
     }
 }
