@@ -29,10 +29,10 @@ public class MkEss extends JavaPlugin {
         new NetherDoorTeleportListener(this);
         new PlayerPrefixListener(this);
         try{
-            Class.forName("PowerfulPermsPlugin");
+            Class.forName("com.github.cheesesoftware.PowerfulPermsAPI.PowerfulPermsPlugin");
             new PlayerVIPExpiredListener(this);
-        } catch(ClassNotFoundException e) {
-            this.log("Not found PowerPerms, disable VIP expired notify");
+        } catch (ClassNotFoundException e) {
+            this.log("Not found PowerfulPerms, disable VIP expired notify");
         }
         new SpeedElytraLimitListener(this);
         netherdoor = new NetherDoorTeleport(this);
