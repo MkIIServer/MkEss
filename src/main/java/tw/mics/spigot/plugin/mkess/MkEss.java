@@ -28,7 +28,12 @@ public class MkEss extends JavaPlugin {
         new LiquidLimitListener(this);
         new NetherDoorTeleportListener(this);
         new PlayerPrefixListener(this);
-        new PlayerVIPExpiredListener(this);
+        try{
+            Class.forName("PowerfulPermsPlugin");
+            new PlayerVIPExpiredListener(this);
+        } catch(ClassNotFoundException e) {
+            this.log("Not found PowerPerms, disable VIP expired notify");
+        }
         new SpeedElytraLimitListener(this);
         netherdoor = new NetherDoorTeleport(this);
         this.getCommand("kill").setExecutor(new KillCommand(this));
