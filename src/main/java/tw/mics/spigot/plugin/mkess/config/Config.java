@@ -3,6 +3,7 @@ package tw.mics.spigot.plugin.mkess.config;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import tw.mics.spigot.plugin.mkess.MkEss;
@@ -11,7 +12,9 @@ public enum Config {
 
 	DEBUG("debug", false, "is plugin show debug message?"),
 	LAVA_FLOW_HIGH_LIMIT("world-protect.lava-flow-limit", 2, "-1 to disable, 0 to limit all lava flow"),
-    WATER_FLOW_HIGH_LIMIT("world-protect.water-flow-limit", 4, "-1 to disable, 0 to limit all water flow");
+    WATER_FLOW_HIGH_LIMIT("world-protect.water-flow-limit", 4, "-1 to disable, 0 to limit all water flow"),
+    WORLD_BORDER_WORLD_SIZE("world-border.world-size", 48000, ""),
+    WORLD_BORDER_NETHER_SIZE("world-border.world-nether-size", 6000, "");
 	
 	private final Object value;
 	private final String path;
@@ -68,7 +71,9 @@ public enum Config {
                 }
                 continue;
             }
-        	header += c.getPath() + ": " + c.getDescription() + System.lineSeparator();
+            if(!c.getDescription().isEmpty()){
+                header += c.getPath() + ": " + c.getDescription() + System.lineSeparator();
+            }
             if (!cfg.contains(c.getPath())) {
             	save_flag = true;
                 c.set(c.getDefaultValue(), false);
