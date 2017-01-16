@@ -86,7 +86,7 @@ public class NetherDoorTeleport {
                         in_portal_list_once.remove(p.getUniqueId());
                         in_portal_list_twice.remove(p.getUniqueId());
                     }
-                    delay = 100 / player_count;
+                    delay = 240 / player_count;
                 }
                 if (delay < 1)
                     delay = 1;
