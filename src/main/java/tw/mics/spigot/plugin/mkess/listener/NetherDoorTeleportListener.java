@@ -1,6 +1,6 @@
 package tw.mics.spigot.plugin.mkess.listener;
 
-import org.bukkit.Location;
+import org.bukkit.World.Environment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerTeleportEvent;
@@ -15,10 +15,12 @@ public class NetherDoorTeleportListener extends MyListener {
 
     @EventHandler
     public void onPlayerTeleport(PlayerTeleportEvent e) {
-        if (e.getCause() == TeleportCause.NETHER_PORTAL) {
+        if (
+                e.getCause() == TeleportCause.NETHER_PORTAL && 
+                e.getTo().getWorld().getEnvironment() == Environment.NORMAL
+        ) {
             Player p = e.getPlayer();
-            Location l = e.getFrom();
-            plugin.netherdoor.setTeleportLocation(p, l);
+            plugin.netherdoor.setTeleportLocation(p, e.getFrom(), e.getTo());
         }
     }
 }
