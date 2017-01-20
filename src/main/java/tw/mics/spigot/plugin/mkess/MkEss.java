@@ -10,6 +10,7 @@ import org.bukkit.scoreboard.Team;
 
 import tw.mics.spigot.plugin.mkess.command.KillCommand;
 import tw.mics.spigot.plugin.mkess.config.Config;
+import tw.mics.spigot.plugin.mkess.listener.ChorseFruitTeleportListener;
 import tw.mics.spigot.plugin.mkess.listener.LiquidLimitListener;
 import tw.mics.spigot.plugin.mkess.listener.NetherDoorTeleportListener;
 import tw.mics.spigot.plugin.mkess.listener.PlayerPrefixListener;
@@ -25,6 +26,7 @@ public class MkEss extends JavaPlugin {
     public void onEnable() {
         INSTANCE = this;
         Config.load();
+        new ChorseFruitTeleportListener(this);
         new LiquidLimitListener(this);
         new NetherDoorTeleportListener(this);
         new PlayerPrefixListener(this);
