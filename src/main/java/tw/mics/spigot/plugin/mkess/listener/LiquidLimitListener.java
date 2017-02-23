@@ -19,7 +19,7 @@ public class LiquidLimitListener extends MyListener {
         if (!(e.getBlock().getType() == Material.STATIONARY_LAVA || e.getBlock().getType() == Material.LAVA))
             return;
 
-        final int lava_high_limit = Config.LAVA_FLOW_HIGH_LIMIT.getInt();
+        final int lava_high_limit = Config.LIQUIDLIMIT_LAVA_FLOW_HIGH_LIMIT.getInt();
 
         if (lava_high_limit != -1) {
             boolean flag_deny = true;
@@ -41,7 +41,7 @@ public class LiquidLimitListener extends MyListener {
     // 防止水流動
     @EventHandler
     public void onWaterFlow(BlockFromToEvent e) {
-        final int water_high_limit = Config.WATER_FLOW_HIGH_LIMIT.getInt();
+        final int water_high_limit = Config.LIQUIDLIMIT_WATER_FLOW_HIGH_LIMIT.getInt();
         if (water_high_limit != -1) {
             if (!(e.getBlock().getType() == Material.STATIONARY_WATER || e.getBlock().getType() == Material.WATER))
                 return;

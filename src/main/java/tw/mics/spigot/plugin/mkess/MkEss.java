@@ -25,22 +25,28 @@ public class MkEss extends JavaPlugin {
     public void onEnable() {
         INSTANCE = this;
         Config.load();
-        new LiquidLimitListener(this);
-        new NetherDoorTeleportListener(this);
-        new PlayerPrefixListener(this);
-        try{
-            Class.forName("com.github.cheesesoftware.PowerfulPermsAPI.PowerfulPermsPlugin");
-            new PlayerVIPExpiredListener(this);
-        } catch (ClassNotFoundException e) {
-            this.log("Not found PowerfulPerms, disable VIP expired notify");
+        if(Config.LIQUIDLIMIT_ENABLE.getBoolean())new LiquidLimitListener(this);
+        if(Config.NETHERDOOR_TELEPORT_BACK_ENABLE.getBoolean())new NetherDoorTeleportListener(this);
+        if(Config.PLAYER_PREFIX_ENABLE.getBoolean())new PlayerPrefixListener(this);
+        if(Config.VIP_EXPIRED_NOTICE_ENABLE.getBoolean()){
+            try{
+                Class.forName("com.github.cheesesoftware.PowerfulPermsAPI.PowerfulPermsPlugin");
+                new PlayerVIPExpiredListener(this);
+            } catch (ClassNotFoundException e) {
+                this.log("Not found PowerfulPerms, disable VIP expired notify");
+            }
         }
-        new SpeedElytraLimitListener(this);
+        if(Config.ELYTRA_SPEED_LIMIT_ENABLE.getBoolean())new SpeedElytraLimitListener(this);
         netherdoor = new NetherDoorTeleport(this);
-        this.getCommand("kill").setExecutor(new KillCommand(this));
         
-        //
-        WorldSetting.runsetting();
-        setScoreboard();
+        if(Config.WORLD_SETTING_ENABLE.getBoolean())
+            WorldSetting.runsetting();
+        
+        if(Config.PLAYER_PREFIX_REMOVE_SCOREBOARD_ON_START.getBoolean())
+            removeScoreboard();
+        
+        if(Config.KILL_COMMAND_ENABLE.getBoolean())
+            this.getCommand("kill").setExecutor(new KillCommand(this));
     }
 
     @Override
@@ -70,7 +76,7 @@ public class MkEss extends JavaPlugin {
     
 
     //================ private ================
-    private void setScoreboard(){
+    private void removeScoreboard(){
         Scoreboard board = Bukkit.getScoreboardManager().getMainScoreboard();
         Iterator<Team> iter = board.getTeams().iterator();
         while(iter.hasNext()){

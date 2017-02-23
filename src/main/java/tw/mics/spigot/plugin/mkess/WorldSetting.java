@@ -14,11 +14,11 @@ public class WorldSetting {
             switch(world.getEnvironment()){
             case NORMAL:
                 world.getWorldBorder().setCenter(0, 0);
-                world.getWorldBorder().setSize(Config.WORLD_BORDER_WORLD_SIZE.getDouble());
+                world.getWorldBorder().setSize(Config.WORLD_SETTING_WORLD_BORDER_SIZE.getDouble());
                 break;
             case NETHER:
                 world.getWorldBorder().setCenter(0, 0);
-                world.getWorldBorder().setSize(Config.WORLD_BORDER_NETHER_SIZE.getDouble());
+                world.getWorldBorder().setSize(Config.WORLD_SETTING_NETHER_BORDER_SIZE.getDouble());
                 break;
             default:
                 break;

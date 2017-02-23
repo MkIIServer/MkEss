@@ -11,10 +11,23 @@ import tw.mics.spigot.plugin.mkess.MkEss;
 public enum Config {
 
 	DEBUG("debug", false, "is plugin show debug message?"),
-	LAVA_FLOW_HIGH_LIMIT("world-protect.lava-flow-limit", 2, "-1 to disable, 0 to limit all lava flow"),
-    WATER_FLOW_HIGH_LIMIT("world-protect.water-flow-limit", 4, "-1 to disable, 0 to limit all water flow"),
-    WORLD_BORDER_WORLD_SIZE("world-border.world-size", 48000, ""),
-    WORLD_BORDER_NETHER_SIZE("world-border.world-nether-size", 6000, "");
+    LIQUIDLIMIT_ENABLE("liquidlimit.enable", true, ""),
+    LIQUIDLIMIT_LAVA_FLOW_HIGH_LIMIT("liquidlimit.lava-flow-limit", 2, "-1 to disable, 0 to limit all lava flow"),
+    LIQUIDLIMIT_WATER_FLOW_HIGH_LIMIT("liquidlimit.water-flow-limit", 4, "-1 to disable, 0 to limit all water flow"),
+    
+    WORLD_SETTING_ENABLE("world-setting.enable", true, ""),
+    WORLD_SETTING_WORLD_BORDER_SIZE("world-setting.world-size", 48000, ""),
+    WORLD_SETTING_NETHER_BORDER_SIZE("world-setting.world-nether-size", 6000, ""),
+    
+    PLAYER_PREFIX_ENABLE("player-prefix.enable", true, ""),
+    PLAYER_PREFIX_REMOVE_SCOREBOARD_ON_START("player-prefix.remove-scoreboard-on-start", true, ""),
+    
+    ELYTRA_SPEED_LIMIT_ENABLE("elytra-speed-limit.enable", true, ""),
+    ELYTRA_SPEED_LIMIT_SPEED("elytra-speed-limit.enable", 1.0, ""),
+    
+    NETHERDOOR_TELEPORT_BACK_ENABLE("netherdoor-teleport-back.enable", true, ""),
+    VIP_EXPIRED_NOTICE_ENABLE("vip-expired-notice.enable", true, ""),
+    KILL_COMMAND_ENABLE("kill-command.enable", true, ""),;
 	
 	private final Object value;
 	private final String path;

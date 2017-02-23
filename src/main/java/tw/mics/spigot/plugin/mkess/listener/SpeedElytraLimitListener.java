@@ -6,6 +6,7 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.util.Vector;
 
 import tw.mics.spigot.plugin.mkess.MkEss;
+import tw.mics.spigot.plugin.mkess.config.Config;
 
 public class SpeedElytraLimitListener extends MyListener {
     public SpeedElytraLimitListener(MkEss instance) {
@@ -19,7 +20,7 @@ public class SpeedElytraLimitListener extends MyListener {
         if(!p.isGliding())return;
         Vector v = p.getVelocity();
         Double speed = Math.sqrt(Math.pow(v.getX(), 2.0) + Math.pow(v.getZ(), 2.0));
-        //plugin.log(speed.toString());
-        if(speed > 1)p.setVelocity( v.multiply(1/speed) );
+        if(speed > Config.ELYTRA_SPEED_LIMIT_SPEED.getDouble())
+            p.setVelocity( v.multiply(Config.ELYTRA_SPEED_LIMIT_SPEED.getDouble()/speed) );
     }
 }
