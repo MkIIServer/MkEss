@@ -23,7 +23,7 @@ public enum Config {
     PLAYER_PREFIX_REMOVE_SCOREBOARD_ON_START("player-prefix.remove-scoreboard-on-start", true, ""),
     
     ELYTRA_SPEED_LIMIT_ENABLE("elytra-speed-limit.enable", true, ""),
-    ELYTRA_SPEED_LIMIT_SPEED("elytra-speed-limit.enable", 1.0, ""),
+    ELYTRA_SPEED_LIMIT_SPEED("elytra-speed-limit.speed-limit", 1.0, ""),
     
     NETHERDOOR_TELEPORT_BACK_ENABLE("netherdoor-teleport-back.enable", true, ""),
     VIP_EXPIRED_NOTICE_ENABLE("vip-expired-notice.enable", true, ""),
