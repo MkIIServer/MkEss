@@ -14,6 +14,7 @@ import tw.mics.spigot.plugin.mkess.listener.LiquidLimitListener;
 import tw.mics.spigot.plugin.mkess.listener.NetherDoorTeleportListener;
 import tw.mics.spigot.plugin.mkess.listener.PlayerPrefixListener;
 import tw.mics.spigot.plugin.mkess.listener.PlayerVIPExpiredListener;
+import tw.mics.spigot.plugin.mkess.listener.ShulkerBoxLimitListener;
 import tw.mics.spigot.plugin.mkess.listener.SpeedElytraLimitListener;
 import tw.mics.spigot.plugin.mkess.schedule.NetherDoorTeleport;
 
@@ -25,9 +26,14 @@ public class MkEss extends JavaPlugin {
     public void onEnable() {
         INSTANCE = this;
         Config.load();
-        if(Config.LIQUIDLIMIT_ENABLE.getBoolean())new LiquidLimitListener(this);
-        if(Config.NETHERDOOR_TELEPORT_BACK_ENABLE.getBoolean())new NetherDoorTeleportListener(this);
-        if(Config.PLAYER_PREFIX_ENABLE.getBoolean())new PlayerPrefixListener(this);
+        if(true)
+            new ShulkerBoxLimitListener(this);
+        if(Config.LIQUIDLIMIT_ENABLE.getBoolean())
+            new LiquidLimitListener(this);
+        if(Config.NETHERDOOR_TELEPORT_BACK_ENABLE.getBoolean())
+            new NetherDoorTeleportListener(this);
+        if(Config.PLAYER_PREFIX_ENABLE.getBoolean())
+            new PlayerPrefixListener(this);
         if(Config.VIP_EXPIRED_NOTICE_ENABLE.getBoolean()){
             try{
                 Class.forName("com.github.cheesesoftware.PowerfulPermsAPI.PowerfulPermsPlugin");
