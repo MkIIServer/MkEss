@@ -27,7 +27,28 @@ public enum Config {
     
     NETHERDOOR_TELEPORT_BACK_ENABLE("netherdoor-teleport-back.enable", true, ""),
     VIP_EXPIRED_NOTICE_ENABLE("vip-expired-notice.enable", true, ""),
-    KILL_COMMAND_ENABLE("kill-command.enable", true, ""),;
+    KILL_COMMAND_ENABLE("kill-command.enable", true, ""), 
+    LIMIT_ITEM_IN_ENDERCHEST_ENABLE("limit-item-in-enderchest.enable", true, ""),
+    LIMIT_ITEM_IN_ENDERCHEST_ITEM_LIST("limit-item-in-enderchest.limit-items", new String[] {
+            "WHITE_SHULKER_BOX",
+            "ORANGE_SHULKER_BOX",
+            "MAGENTA_SHULKER_BOX",
+            "LIGHT_BLUE_SHULKER_BOX",
+            "YELLOW_SHULKER_BOX",
+            "LIME_SHULKER_BOX",
+            "PINK_SHULKER_BOX",
+            "GRAY_SHULKER_BOX",
+            "SILVER_SHULKER_BOX",
+            "CYAN_SHULKER_BOX",
+            "PURPLE_SHULKER_BOX",
+            "BLUE_SHULKER_BOX",
+            "BROWN_SHULKER_BOX",
+            "GREEN_SHULKER_BOX",
+            "RED_SHULKER_BOX",
+            "BLACK_SHULKER_BOX",
+            "TNT",
+            "SULPHUR",
+    }, "this is non-use for now, it fixed in code"),;
 	
 	private final Object value;
 	private final String path;

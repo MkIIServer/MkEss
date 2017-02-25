@@ -26,7 +26,7 @@ public class MkEss extends JavaPlugin {
     public void onEnable() {
         INSTANCE = this;
         Config.load();
-        if(true)
+        if(Config.LIMIT_ITEM_IN_ENDERCHEST_ENABLE.getBoolean())
             new ShulkerBoxLimitListener(this);
         if(Config.LIQUIDLIMIT_ENABLE.getBoolean())
             new LiquidLimitListener(this);
