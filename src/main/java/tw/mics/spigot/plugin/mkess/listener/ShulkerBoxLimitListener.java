@@ -33,8 +33,6 @@ public class ShulkerBoxLimitListener extends MyListener {
             Material.GREEN_SHULKER_BOX,
             Material.RED_SHULKER_BOX,
             Material.BLACK_SHULKER_BOX,
-            Material.TNT,
-            Material.SULPHUR,
     };
 
     @EventHandler
