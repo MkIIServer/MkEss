@@ -78,11 +78,7 @@
 	        <url>https://jitpack.io</url>
 	    </repository>
 	    
-        <!-- LuckPerms API -->
         <repository>
-	        <id>luck-repo</id>
-	        <url>http://repo.lucko.me/</url>
-	    </repository>
     </repositories>
 
     <dependencies>
@@ -110,13 +106,7 @@
 	        <scope>provided</scope>
 	    </dependency>
 	    
-        <!-- LuckPerms API -->
         <dependency>
-	        <groupId>me.lucko.luckperms</groupId>
-	        <artifactId>luckperms-api</artifactId>
-	        <version>2.17</version>
-	        <scope>provided</scope>
-	    </dependency>
     </dependencies>
     <description>MkII Server Modify. (private use, no config)</description>
 </project>
