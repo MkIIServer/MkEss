@@ -23,7 +23,7 @@ public class WorldSetting {
             default:
                 break;
             }
-            world.setGameRuleValue("showDeathMessages", "false");
+            world.setGameRuleValue("showDeathMessages", "true");
             world.setGameRuleValue("maxEntityCramming", "8");
         }
     }
