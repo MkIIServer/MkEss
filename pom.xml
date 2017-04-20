@@ -78,7 +78,11 @@
 	        <url>https://jitpack.io</url>
 	    </repository>
 	    
+        <!-- ProtocolLib-API -->
         <repository>
+          <id>dmulloy2-repo</id>
+          <url>http://repo.dmulloy2.net/content/groups/public/</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -106,7 +110,23 @@
 	        <scope>provided</scope>
 	    </dependency>
 	    
+        <!-- ProtocolLib-API -->
         <dependency>
+          <groupId>com.comphenix.protocol</groupId>
+          <artifactId>ProtocolLib-API</artifactId>
+          <version>4.2.1</version>
+        </dependency>
+        
+        
+        <!-- NMS-API -->
+        <dependency>
+            <groupId>sample</groupId>
+            <artifactId>com.sample</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/../../TestServer/spigot-1.11.2.jar</systemPath>
+        </dependency>
+        
     </dependencies>
     <description>MkII Server Modify. (private use, no config)</description>
 </project>

@@ -48,7 +48,10 @@ public enum Config {
             "BLACK_SHULKER_BOX",
             "TNT",
             "SULPHUR",
-    }, "this is non-use for now, it fixed in code"),;
+    }, "this is non-use for now, it fixed in code"),
+    
+    DEATH_DISTANCE_ENABLE("death-message-display-distance-limit.enable", true, ""),
+    DEATH_DISTANCE_DISTANCE("death-message-display-distance-limit.distance", 250, ""),;
 	
 	private final Object value;
 	private final String path;

@@ -12,6 +12,7 @@ import tw.mics.spigot.plugin.mkess.command.KillCommand;
 import tw.mics.spigot.plugin.mkess.config.Config;
 import tw.mics.spigot.plugin.mkess.listener.LiquidLimitListener;
 import tw.mics.spigot.plugin.mkess.listener.NetherDoorTeleportListener;
+import tw.mics.spigot.plugin.mkess.listener.PlayerDeathMessagerListener;
 import tw.mics.spigot.plugin.mkess.listener.PlayerPrefixListener;
 import tw.mics.spigot.plugin.mkess.listener.PlayerVIPExpiredListener;
 import tw.mics.spigot.plugin.mkess.listener.ShulkerBoxLimitListener;
@@ -53,6 +54,8 @@ public class MkEss extends JavaPlugin {
         
         if(Config.KILL_COMMAND_ENABLE.getBoolean())
             this.getCommand("kill").setExecutor(new KillCommand(this));
+        if(Config.DEATH_DISTANCE_ENABLE.getBoolean())
+            new PlayerDeathMessagerListener(this);
     }
 
     @Override
