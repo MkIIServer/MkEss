@@ -61,7 +61,6 @@ public class PlayerDeathMessagerListener extends MyListener  {
                 Player p = event.getPlayer();
                 WrappedChatComponent msg = event.getPacket().getChatComponents().read(0);
                 JSONParser parser = new JSONParser();
-                MkEss.getInstance().log(msg.getJson());
                 try {
                     JSONObject jsonObject = (JSONObject)(parser.parse(msg.getJson()));
                     if(jsonObject.get("translate") instanceof String){
