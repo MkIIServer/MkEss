@@ -24,7 +24,6 @@ public class KillCommand implements CommandExecutor {
             return true;
         }
         Player p = (Player) sender;
-        p.damage(100);
         p.setHealth(0);
         return true;
     }
