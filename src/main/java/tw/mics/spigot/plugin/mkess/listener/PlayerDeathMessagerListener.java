@@ -73,9 +73,7 @@ public class PlayerDeathMessagerListener extends MyListener  {
                                 event.setCancelled(true);
                         }
                     }
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
+                } catch (ParseException | NullPointerException e) { }
             }
         };
     }
