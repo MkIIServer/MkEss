@@ -17,6 +17,7 @@ import tw.mics.spigot.plugin.mkess.listener.PlayerPrefixListener;
 import tw.mics.spigot.plugin.mkess.listener.PlayerVIPExpiredListener;
 import tw.mics.spigot.plugin.mkess.listener.ShulkerBoxLimitListener;
 import tw.mics.spigot.plugin.mkess.listener.SpeedElytraLimitListener;
+import tw.mics.spigot.plugin.mkess.listener.VillagerTradeLimitListener;
 import tw.mics.spigot.plugin.mkess.schedule.NetherDoorTeleport;
 
 public class MkEss extends JavaPlugin {
@@ -56,6 +57,8 @@ public class MkEss extends JavaPlugin {
             this.getCommand("kill").setExecutor(new KillCommand(this));
         if(Config.DEATH_DISTANCE_ENABLE.getBoolean())
             new PlayerDeathMessagerListener(this);
+        if(Config.VILLAGER_TRADE_LIMIT_ENABLE.getBoolean())
+            new VillagerTradeLimitListener(this);
     }
 
     @Override

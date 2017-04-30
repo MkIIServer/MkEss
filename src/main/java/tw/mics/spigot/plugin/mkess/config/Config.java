@@ -51,7 +51,11 @@ public enum Config {
     }, "this is non-use for now, it fixed in code"),
     
     DEATH_DISTANCE_ENABLE("death-message-display-distance-limit.enable", true, ""),
-    DEATH_DISTANCE_DISTANCE("death-message-display-distance-limit.distance", 250, ""),;
+    DEATH_DISTANCE_DISTANCE("death-message-display-distance-limit.distance", 250, ""),
+
+    VILLAGER_TRADE_LIMIT_ENABLE("villager-trade-limit.enable", true, ""),
+    VILLAGER_TRADE_LIMIT_ADD_REQUIRE_ITEM_CHANCE("villager-trade-limit.add-require-item-chance", 1, ""),
+    VILLAGER_TRADE_LIMIT_ADD_AMOUNT("villager-trade-limit.add-amount", 1, ""),;
 	
 	private final Object value;
 	private final String path;
