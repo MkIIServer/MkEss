@@ -2,6 +2,7 @@ package tw.mics.spigot.plugin.mkess.listener;
 
 import static com.comphenix.protocol.PacketType.Play.Client.WINDOW_CLICK;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -47,9 +48,15 @@ public class BSPPlayerShopHackListener extends MyListener {
                         inv.getItem(slot).getType() != Material.AIR
                         
                 ){
-                    event.setCancelled(true);
-                    p.updateInventory();
-                    p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&c商店物品無法直接拿回, 請於購買模式中自行購回"));
+                    event.getPacket().getIntegers().write(1, -999);
+                    Bukkit.getScheduler().scheduleSyncDelayedTask(MkEss.getInstance(), new Runnable(){
+                        @Override
+                        public void run() {
+                            p.updateInventory();
+                            p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&c商店物品無法直接拿回, 請於購買模式中自行購回"));
+                        }
+                    });
+                   
                 }
             }
         };
