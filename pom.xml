@@ -117,16 +117,6 @@
           <version>4.2.1</version>
         </dependency>
         
-        
-        <!-- NMS-API -->
-        <dependency>
-            <groupId>sample</groupId>
-            <artifactId>com.sample</artifactId>
-            <version>1.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/../../TestServer/spigot-1.11.2.jar</systemPath>
-        </dependency>
-        
     </dependencies>
     <description>MkII Server Modify. (private use, no config)</description>
 </project>
