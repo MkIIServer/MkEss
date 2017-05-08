@@ -55,7 +55,10 @@ public enum Config {
 
     VILLAGER_TRADE_LIMIT_ENABLE("villager-trade-limit.enable", true, ""),
     VILLAGER_TRADE_LIMIT_ADD_REQUIRE_ITEM_CHANCE("villager-trade-limit.add-require-item-chance", 1, ""),
-    VILLAGER_TRADE_LIMIT_ADD_AMOUNT("villager-trade-limit.add-amount", 1, ""),;
+    VILLAGER_TRADE_LIMIT_ADD_AMOUNT("villager-trade-limit.add-amount", 1, ""),
+    
+    BSP_PLAYER_SHOP_HACK_ENABLE("bsp-player-shop-hack.enable", false, ""),
+    BSP_PLAYER_SHOP_HACK_EDIT_MODE_NAME("bsp-player-shop-hack.edit-mode-name", "&c&l編輯模式", ""),;
 	
 	private final Object value;
 	private final String path;
@@ -88,10 +91,14 @@ public enum Config {
 	public int getInt() {
 	    return cfg.getInt(path);
 	}
-	
-	public double getDouble() {
-	    return cfg.getDouble(path);
-	}
+    
+    public double getDouble() {
+        return cfg.getDouble(path);
+    }
+    
+    public String getString() {
+        return cfg.getString(path);
+    }
 	
 	public List<String> getStringList() {
 	    return cfg.getStringList(path);

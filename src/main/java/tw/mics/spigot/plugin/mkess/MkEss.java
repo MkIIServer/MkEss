@@ -10,6 +10,7 @@ import org.bukkit.scoreboard.Team;
 
 import tw.mics.spigot.plugin.mkess.command.KillCommand;
 import tw.mics.spigot.plugin.mkess.config.Config;
+import tw.mics.spigot.plugin.mkess.listener.BSPPlayerShopHackListener;
 import tw.mics.spigot.plugin.mkess.listener.LiquidLimitListener;
 import tw.mics.spigot.plugin.mkess.listener.NetherDoorTeleportListener;
 import tw.mics.spigot.plugin.mkess.listener.PlayerDeathMessagerListener;
@@ -59,6 +60,8 @@ public class MkEss extends JavaPlugin {
             new PlayerDeathMessagerListener(this);
         if(Config.VILLAGER_TRADE_LIMIT_ENABLE.getBoolean())
             new VillagerTradeLimitListener(this);
+        if(Config.BSP_PLAYER_SHOP_HACK_ENABLE.getBoolean())
+            new BSPPlayerShopHackListener(this);
     }
 
     @Override
